@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Reservación de Aulas</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Tu CSS personalizado -->
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <header class="mb-4 text-center">
+    <h1>Reservación de Aulas - Universidad</h1>
+  </header>
+
+  <main class="container">
+    <section class="section mx-auto" style="max-width: 400px;">
+      <h2 class="mb-3 text-center">Iniciar Sesión</h2>
+      <form id="login-form">
+        <label for="user-type" class="form-label">Tipo de Usuario</label>
+        <select id="user-type" name="user-type" class="form-select" required>
+          <option value="" disabled selected>Seleccione...</option>
+          <option value="estudiante">Estudiante</option>
+          <option value="profesor">Profesor</option>
+          <option value="administrativo">Personal Administrativo</option>
+        </select>
+
+        <label for="username" class="form-label mt-3">Usuario</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Ingrese su usuario" required />
+
+        <label for="password" class="form-label mt-3">Contraseña</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Ingrese su contraseña" required />
+
+        <button type="submit" class="btn btn-primary mt-4 w-100">Ingresar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita el envío normal
+
+      // Validar que los campos no estén vacíos (el required ya lo hace, pero por seguridad)
+      const userType = form['user-type'].value;
+      const username = form['username'].value.trim();
+      const password = form['password'].value.trim();
+
+      if (userType && username && password) {
+        // Aquí podrías hacer validaciones adicionales o llamadas a backend si hubiera
+        // Por ahora, redirigimos a index.html
+        window.location.href = 'index.html';
+      } else {
+        alert('Por favor, complete todos los campos.');
+      }
+    });
+  </script>
+</body>
+</html>
+
